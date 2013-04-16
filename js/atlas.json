@@ -1,0 +1,76 @@
+{"frames": {
+
+"blob.png":
+{
+	"frame": {"x":32,"y":557,"w":22,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":22,"h":22},
+	"sourceSize": {"w":32,"h":32}
+},
+"blob2.png":
+{
+	"frame": {"x":32,"y":533,"w":28,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":4,"w":28,"h":22},
+	"sourceSize": {"w":32,"h":32}
+},
+"blob3.png":
+{
+	"frame": {"x":2,"y":533,"w":26,"h":28},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":2,"w":26,"h":28},
+	"sourceSize": {"w":32,"h":32}
+},
+"blob4.png":
+{
+	"frame": {"x":62,"y":533,"w":26,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":3,"w":26,"h":24},
+	"sourceSize": {"w":32,"h":32}
+},
+"enemy.png":
+{
+	"frame": {"x":104,"y":504,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"map.png":
+{
+	"frame": {"x":2,"y":2,"w":500,"h":500},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":500},
+	"sourceSize": {"w":500,"h":500}
+},
+"prize.png":
+{
+	"frame": {"x":2,"y":561,"w":20,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":2,"w":20,"h":20},
+	"sourceSize": {"w":32,"h":26}
+},
+"wall.png":
+{
+	"frame": {"x":2,"y":504,"w":100,"h":27},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":5,"w":27,"h":100},
+	"sourceSize": {"w":47,"h":110}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "atlas.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:589ce09698a803f48ce06101518be870$"
+}
+}
