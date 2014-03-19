@@ -22,7 +22,6 @@
     var context = canvas.getContext('2d');  0
     var mapJsonString = xhrGet('js/atlas.json');
     var isAtlasDataLoaded = false;
-    //var canvasAlphaData;
     var collisionArray;
     
     function spriteSheetLoaderCallback() {
@@ -114,10 +113,6 @@
     
     function movePlayer(x, y) {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        //var mapDataAlpha = getCanvasAlphaData(canvasAlphaData, player.getX() + x, player.getY() + y);
-        //if(mapDataAlpha == 0) {
-        //    player.pos.x += x; player.pos.y += y;
-        //}
         var x1 = player.getX() + x;
         var y1 = player.getY() + y;
         if(collisionArray[x1][y1] == 0) {
@@ -128,15 +123,10 @@
         }
     };
     
-    //function getCanvasAlphaData(canvasData, x, y) {
-    //    return canvasData[((y*(canvas.width*4)) + x*4) + 3];
-    //}
-    
     function render() {
         for(var i = 0; i < updatable.length; i++) {
             var x = getRand();
             var y = getRand();
-            //var mapDataAlpha = getCanvasAlphaData(canvasAlphaData, updatable[i].getX() + x, updatable[i].getY() + y);
             var x1 = updatable[i].getX() + x;
             var y1 = updatable[i].getY() + y;
             if(collisionArray[x1][y1] == 0) {
