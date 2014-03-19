@@ -9,6 +9,7 @@
         <script type="text/javascript" src="js/spriteSheet.js"></script>
         <script type="text/javascript" src="js/entity.js"></script>
         <script type="text/javascript" src="js/xhr.js"></script>
+        <script type="text/javascript" src="js/collisionArray.js"></script>
     </head>
     <body>
         <canvas id="canvas" width="500" height="500"></canvas>
@@ -18,10 +19,11 @@
 <script type="text/javascript">
 
     var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');  
+    var context = canvas.getContext('2d');  0
     var mapJsonString = xhrGet('js/atlas.json');
     var isAtlasDataLoaded = false;
-    var canvasAlphaData;
+    //var canvasAlphaData;
+    var collisionArray;
     
     function spriteSheetLoaderCallback() {
         start();
@@ -72,7 +74,7 @@
     var wall = new EntityClass(120, 400);
     wall.sprites = ["wall.png"];
     
-    //push all entities into array
+    //push all entities into array (map first then wall)
     var entities = [map, wall, player, enemy, enemy2, enemy3, prize];
     var updatable = [enemy, enemy2, enemy3];
     var enemies = [enemy, enemy2, enemy3];
@@ -84,6 +86,7 @@
             //we do the following so we can get an array of rdba values for each pixel of canvas to use for collisions
             if(!isAtlasDataLoaded && i == 1) {
                 canvasAlphaData = context.getImageData(0, 0, canvas.width, canvas.height).data;
+                collisionArray = buildCollisionArray(canvasAlphaData, 500, 500);
                 isAtlasDataLoaded = true;
             }
         }
@@ -98,6 +101,7 @@
     }
     
     function prizeCollisionEvent() {
+        //Nothing yet
         reset();
     }
     
@@ -110,8 +114,13 @@
     
     function movePlayer(x, y) {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        var mapDataAlpha = getCanvasAlphaData(canvasAlphaData, player.getX() + x, player.getY() + y);
-        if(mapDataAlpha == 0) {
+        //var mapDataAlpha = getCanvasAlphaData(canvasAlphaData, player.getX() + x, player.getY() + y);
+        //if(mapDataAlpha == 0) {
+        //    player.pos.x += x; player.pos.y += y;
+        //}
+        var x1 = player.getX() + x;
+        var y1 = player.getY() + y;
+        if(collisionArray[x1][y1] == 0) {
             player.pos.x += x; player.pos.y += y;
         }
         for(var i = 0; i < entities.length; i++) {
@@ -119,16 +128,18 @@
         }
     };
     
-    function getCanvasAlphaData(canvasData, x, y) {
-        return canvasData[((y*(canvas.width*4)) + x*4) + 3];
-    }
+    //function getCanvasAlphaData(canvasData, x, y) {
+    //    return canvasData[((y*(canvas.width*4)) + x*4) + 3];
+    //}
     
     function render() {
         for(var i = 0; i < updatable.length; i++) {
             var x = getRand();
             var y = getRand();
-            var mapDataAlpha = getCanvasAlphaData(canvasAlphaData, updatable[i].getX() + x, updatable[i].getY() + y);
-            if(mapDataAlpha == 0) {
+            //var mapDataAlpha = getCanvasAlphaData(canvasAlphaData, updatable[i].getX() + x, updatable[i].getY() + y);
+            var x1 = updatable[i].getX() + x;
+            var y1 = updatable[i].getY() + y;
+            if(collisionArray[x1][y1] == 0) {
                 updatable[i].update(x, y);
             }
         }

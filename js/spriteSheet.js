@@ -8,15 +8,12 @@ var mapData;
 SpriteSheetClass = Class.extend({
 
     img: null,
-    
     url: "",
-    
     sprites: new Array(),
 
     init: function () {
 
     },
-
     load: function (imgName, f) {
         // Store the URL of the spritesheet we want.
         this.url = imgName;
@@ -33,7 +30,6 @@ SpriteSheetClass = Class.extend({
         // dictionary gSpriteSheets defined above.
         gSpriteSheets[imgName] = this;
     },
-
     defSprite: function (name, x, y, w, h, cx, cy) {
         var spt = {
             "id": name,
@@ -46,7 +42,6 @@ SpriteSheetClass = Class.extend({
         };
         this.sprites.push(spt);
     },
-
     parseAtlasDefinition: function (atlasJSON) {
         var parsed = JSON.parse(atlasJSON);
 
@@ -66,7 +61,6 @@ SpriteSheetClass = Class.extend({
             this.defSprite(key, width, height, sprite.frame.w, sprite.frame.h, cx, cy);
         }
     }, 
-    
     getStats: function (name) {
         for(var i = 0; i < this.sprites.length; i++) {
             if(this.sprites[i].id === name) {
