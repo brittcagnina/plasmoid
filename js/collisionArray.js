@@ -4,7 +4,6 @@ function buildCollisionArray(ctx, width, height) {
 		imgArray[i] = new Array(height);
 	}
 
-	//alert("imgData size is " + ctx.length);
 	for(i = 0; i < ctx.length; i++) {
 		var col = Math.floor(i/((width)*4));
 		if(i == 3 || (i - 3)%4 == 0) {
